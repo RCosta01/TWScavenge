@@ -195,6 +195,8 @@ function scavenge() {
         scavenge();
     });
 
+    checkboxesHaul = $(".border-frame-gold-red :checkbox");
+
     checkboxesHaul.on("change", function () {
         var checkboxesHaulValue = [];
         checkboxesHaul.each(function(){            
