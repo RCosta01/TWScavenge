@@ -211,11 +211,36 @@ function scavenge() {
 
     sendButtons = $(".free_send_button")
     sendButtons.on("click", async function() {
-        await new Promise(r => setTimeout(r, 2000));
-        calculateHauls();
-        haulCategory = 0;
-        localStorage.setItem("haulCategory", haulCategory);
-        scavenge();
+        
+        var css = 
+        `#curtain {
+          position: fixed;
+          _position: absolute;
+          z-index: 99;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          _height: expression(document.body.offsetHeight + "px");
+          background: url(curtain.png);
+          _background: url(curtain.gif);
+        }`;
+        var styleSheet = document.createElement("style")
+        styleSheet.textContent = css
+        document.head.appendChild(styleSheet)
+        var curtain = document.body.appendChild( document.createElement('div'). );
+        curtain.id = "curtain";
+        curtain.onkeypress = curtain.onclick = function(){ return false; }
+        try {
+            await new Promise(r => setTimeout(r, 200));
+            calculateHauls();
+            haulCategory = 0;
+            localStorage.setItem("haulCategory", haulCategory);
+            scavenge();
+        }
+        finally {
+            curtain.parentNode.removeChild( curtain );
+        }
     });
 
     $.each(checkboxValues, function (key, value) {
