@@ -136,8 +136,10 @@ function scavenge() {
          </div>\
          ';
         }
-        let haulValueCheckboxes = localStorage.getItem("checkboxHaulValues")
-        if(!haulValueCheckboxes){
+        if("checkboxHaulValues" in localStorage){
+            let haulValueCheckboxes = localStorage.getItem("checkboxHaulValues")
+        }
+        else{
             haulValueCheckboxes = [true,true,true,true];
         }
         for (i = 0; i < $(".border-frame-gold-red").length; i++) {
