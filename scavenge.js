@@ -228,7 +228,7 @@ function scavenge() {
         var styleSheet = document.createElement("style")
         styleSheet.textContent = css
         document.head.appendChild(styleSheet)
-        var curtain = document.body.appendChild( document.createElement('div'). );
+        var curtain = document.body.appendChild( document.createElement('div') );
         curtain.id = "curtain";
         curtain.onkeypress = curtain.onclick = function(){ return false; }
         try {
