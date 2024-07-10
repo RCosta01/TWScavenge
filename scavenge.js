@@ -209,6 +209,15 @@ function scavenge() {
         scavenge();
     })
 
+    sendButtons = $(".free_send_button")
+    sendButtons.on("change", function() {
+        await new Promise(r => setTimeout(r, 2000));
+        calculateHauls();
+        haulCategory = 0;
+        localStorage.setItem("haulCategory", haulCategory);
+        scavenge();
+    }
+
     $.each(checkboxValues, function (key, value) {
         $("#" + key).prop('checked', value);
     });
