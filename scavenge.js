@@ -144,7 +144,7 @@ function scavenge() {
         }
         for (i = 0; i < $(".border-frame-gold-red").length; i++) {
             cat = document.createElement('div');
-            cat.innerHTML = '<div align="center"><h3>Enable</h3><input type="checkbox" ID="haul' + (i + 1) + 'Enabled" checked="' + haulValueCheckboxes[i] + '" ><hr></div>';
+            cat.innerHTML = '<div align="center"><h3>Enable</h3><input type="checkbox" ID="haul' + (i + 1) + 'Enabled" checked=' + haulValueCheckboxes[i] + ' ><hr></div>';
             $(".border-frame-gold-red")[i].prepend(cat);
         }
 
