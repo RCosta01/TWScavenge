@@ -194,7 +194,7 @@ function scavenge() {
     checkboxesHaul.on("change", function () {
         var checkboxesHaulValue = [];
         checkboxesHaul.each(function(){            
-            checkboxesHaulValue.add(this.checked);
+            checkboxesHaulValue.push(this.checked);
         })
         localStorage.setItem("checkboxHaulValues", JSON.stringify(checkboxesHaulValue))
     })
