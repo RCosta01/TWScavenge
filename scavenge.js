@@ -203,6 +203,10 @@ function scavenge() {
             checkboxesHaulValue.push(this.checked);
         })
         localStorage.setItem("checkboxHaulValues", JSON.stringify(checkboxesHaulValue))
+        calculateHauls();
+        haulCategory = 0;
+        localStorage.setItem("haulCategory", haulCategory);
+        scavenge();
     })
 
     $.each(checkboxValues, function (key, value) {
