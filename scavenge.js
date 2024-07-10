@@ -303,6 +303,44 @@ function scavenge() {
         }
     }
 
+    var units = [
+        {
+                type: 'spear',
+                count: spears,
+                value: 25
+            },
+            {
+                type: 'sword',
+                count: swords,
+                value: 15
+            },
+            {
+                type: 'axe',
+                count: axes,
+                value: 10
+            },
+            {
+                type: 'archer',
+                count: archer,
+                value: 10
+            },
+            {
+                type: 'light',
+                count: lightC,
+                value: 80
+            },
+            {
+                type: 'marcher',
+                count: marcher,
+                value: 50
+            },
+            {
+                type: 'heavy',
+                count: heavyC,
+                value: 50
+            },
+    ];
+
     if (haulCategory == 1) {
         scavengeOptions = {};
         scavengeOptions[greatGatherers] = [
@@ -552,124 +590,128 @@ function scavenge() {
         } else {
             if (haulCategory == 3) {
                 scavengeOptions = {};
+                var result = closestCombination((totalLoot / totalHaul * haul4), units)
                 scavengeOptions[greatGatherers] = [
                     {
                         type: 'spear',
-                        count: ((totalLoot / totalHaul * haul4) * (spears / possibleLoot))
+                        count: result.find(e=>e.type === 'spear').count
                     },
                     {
                         type: 'sword',
-                        count: ((totalLoot / totalHaul * haul4) * (swords / possibleLoot))
+                        count: result.find(e=>e.type === 'sword').count
                     },
                     {
                         type: 'axe',
-                        count: ((totalLoot / totalHaul * haul4) * (axes / possibleLoot))
+                        count: result.find(e=>e.type === 'axe').count
                     },
                     {
                         type: 'light',
-                        count: ((totalLoot / totalHaul * haul4) * (lightC / possibleLoot))
+                        count: result.find(e=>e.type === 'light').count
                     },
                     {
                         type: 'heavy',
-                        count: ((totalLoot / totalHaul * haul4) * (heavyC / possibleLoot))
+                        count: result.find(e=>e.type === 'heavy').count
                     },
                     {
                         type: 'archer',
-                        count: ((totalLoot / totalHaul * haul4) * (archer / possibleLoot))
+                        count: result.find(e=>e.type === 'archer').count
                     },
                     {
                         type: 'marcher',
-                        count: ((totalLoot / totalHaul * haul4) * (marcher / possibleLoot))
+                        count: result.find(e=>e.type === 'marcher').count
                     },
                 ];
+                result = closestCombination((totalLoot / (totalHaul - haul4) * haul3), units)
                 scavengeOptions[cleverCollectors] = [
                     {
                         type: 'spear',
-                        count: ((totalLoot / (totalHaul - haul4) * haul3) * (spears / possibleLoot))
+                        count: result.find(e=>e.type === 'spear').count
                     },
                     {
                         type: 'sword',
-                        count: ((totalLoot / (totalHaul - haul4) * haul3) * (swords / possibleLoot))
+                        count: result.find(e=>e.type === 'sword').count
                     },
                     {
                         type: 'axe',
-                        count: ((totalLoot / (totalHaul - haul4) * haul3) * (axes / possibleLoot))
+                        count: result.find(e=>e.type === 'axe').count
                     },
                     {
                         type: 'light',
-                        count: ((totalLoot / (totalHaul - haul4) * haul3) * (lightC / possibleLoot))
+                        count: result.find(e=>e.type === 'light').count
                     },
                     {
                         type: 'heavy',
-                        count: ((totalLoot / (totalHaul - haul4) * haul3) * (heavyC / possibleLoot))
+                        count: result.find(e=>e.type === 'heavy').count
                     },
                     {
                         type: 'archer',
-                        count: ((totalLoot / (totalHaul - haul4) * haul3) * (archer / possibleLoot))
+                        count: result.find(e=>e.type === 'archer').count
                     },
                     {
                         type: 'marcher',
-                        count: ((totalLoot / (totalHaul - haul4) * haul3) * (marcher / possibleLoot))
+                        count: result.find(e=>e.type === 'marcher').count
                     },
                 ];
+                result = closestCombination((totalLoot / (totalHaul - haul4 - haul3) * haul2), units)
                 scavengeOptions[humbleHaulers] = [
                     {
                         type: 'spear',
-                        count: ((totalLoot / (totalHaul - haul4 - haul3) * haul2) * (spears / possibleLoot))
+                        count: result.find(e=>e.type === 'spear').count
                     },
                     {
                         type: 'sword',
-                        count: ((totalLoot / (totalHaul - haul4 - haul3) * haul2) * (swords / possibleLoot))
+                        count: result.find(e=>e.type === 'sword').count
                     },
                     {
                         type: 'axe',
-                        count: ((totalLoot / (totalHaul - haul4 - haul3) * haul2) * (axes / possibleLoot))
+                        count: result.find(e=>e.type === 'axe').count
                     },
                     {
                         type: 'light',
-                        count: ((totalLoot / (totalHaul - haul4 - haul3) * haul2) * (lightC / possibleLoot))
+                        count: result.find(e=>e.type === 'light').count
                     },
                     {
                         type: 'heavy',
-                        count: ((totalLoot / (totalHaul - haul4 - haul3) * haul2) * (heavyC / possibleLoot))
+                        count: result.find(e=>e.type === 'heavy').count
                     },
                     {
                         type: 'archer',
-                        count: ((totalLoot / (totalHaul - haul4 - haul3) * haul2) * (archer / possibleLoot))
+                        count: result.find(e=>e.type === 'archer').count
                     },
                     {
                         type: 'marcher',
-                        count: ((totalLoot / (totalHaul - haul4 - haul3) * haul2) * (marcher / possibleLoot))
+                        count: result.find(e=>e.type === 'marcher').count
                     },
                 ];
+                result = closestCombination((totalLoot / (totalHaul - haul4 - haul3 - haul2) * haul1), units)
                 scavengeOptions[lackadaisicalLooters] = [
                     {
                         type: 'spear',
-                        count: (totalLoot * (spears / possibleLoot))
+                        count: result.find(e=>e.type === 'spear').count
                     },
                     {
                         type: 'sword',
-                        count: (totalLoot * (swords / possibleLoot))
+                        count: result.find(e=>e.type === 'sword').count
                     },
                     {
                         type: 'axe',
-                        count: (totalLoot * (axes / possibleLoot))
+                        count: result.find(e=>e.type === 'axe').count
                     },
                     {
                         type: 'light',
-                        count: (totalLoot * (lightC / possibleLoot))
+                        count: result.find(e=>e.type === 'light').count
                     },
                     {
                         type: 'heavy',
-                        count: (totalLoot * (heavyC / possibleLoot))
+                        count: result.find(e=>e.type === 'heavy').count
                     },
                     {
                         type: 'archer',
-                        count: (totalLoot * (archer / possibleLoot))
+                        count: result.find(e=>e.type === 'archer').count
                     },
                     {
                         type: 'marcher',
-                        count: (totalLoot * (marcher / possibleLoot))
+                        count: result.find(e=>e.type === 'marcher').count
                     },
                 ];
             }
@@ -677,6 +719,29 @@ function scavenge() {
     }
 
     run();
+
+    function closestCombination(target, types) {
+    // Sort the types in descending order of their values
+    types.sort((a, b) => b.value - a.value);
+
+    let result = [];
+    let remaining = target;
+
+    for (let i = 0; i < types.length; i++) {
+        let type = types[i];
+        let count = Math.min(Math.floor(remaining / type.value), type.count);
+        if (count > 0) {
+            remaining -= count * type.value;
+            if(remaining === 5 && type.value === 15){
+              remaining += type.value
+              count -= 1
+            }
+        }
+        result.push({ type: type.type, count: count });
+    }
+
+    return result;
+}    
 
     function run() {
         let btn = null;
