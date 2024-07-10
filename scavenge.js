@@ -1,10 +1,12 @@
 javascript:
 //Creators: Sophie "Shinko to Kuma" - Mitchell "Superdog"
+//Upgraded by: FoX05
 /*Update list:
 V1.0 - Updated 2/03 - Added automatic grabbing of iables!
 V1.1 - Updated 7/03 - Functionality on all servers!
 V1.2 - Updated 8/03 - rewrote script to fix some big bugs, condensed code, retiring old version
 V1.3 - Updated 9/03 - Adjusted script to work on mobile APP!
+V1.4 - Updated 10/07/2024 - Upgraded algorythm for scavanges, fixed enable buttons
 */
 
 //added to count how many times script gets ran
@@ -134,9 +136,10 @@ function scavenge() {
          </div>\
          ';
         }
+        let haulValueCheckboxes = localStorage.getItem("checkboxHaulValues")
         for (i = 0; i < $(".border-frame-gold-red").length; i++) {
             cat = document.createElement('div');
-            cat.innerHTML = '<div align="center"><h3>Enable</h3><input type="checkbox" ID="haul' + (i + 1) + 'Enabled" name="haul' + (i + 1) + 'Enabled" ><hr></div>';
+            cat.innerHTML = '<div align="center"><h3>Enable</h3><input type="checkbox" ID="haul' + (i + 1) + 'Enabled" name="haul' + (i + 1) + 'Enabled" checked="' + haulValueCheckboxes[i] + '" ><hr></div>';
             $(".border-frame-gold-red")[i].prepend(cat);
         }
 
@@ -182,6 +185,16 @@ function scavenge() {
         localStorage.setItem("haulCategory", haulCategory);
         scavenge();
     });
+
+    var checkboxesHaul = $(".border-frame-gold-red :checkbox");
+
+    checkboxesHaul.on("change", function () {
+        var checkboxesHaulValue = [];
+        checkboxesHaul.each(function(){            
+            checkboxesHaulValue.add(this.checked);
+        })
+        localStorage.setItem("checkboxHaulValues", JSON.stringify(checkboxesHaulValue))
+    })
 
     $.each(checkboxValues, function (key, value) {
         $("#" + key).prop('checked', value);
@@ -271,8 +284,12 @@ function scavenge() {
         haul2 = haul / 0.25;
         haul3 = haul / 0.5;
         haul4 = haul / 0.75;
-        totalHaul = haul1 + haul2 + haul3 + haul4;
-
+        var enabled = $(".border-frame-gold-red :checkbox");
+        totalHaul = 0;
+        if (enabled[0].checked) totalHaul += haul1;
+        if (enabled[1].checked) totalHaul += haul2;
+        if (enabled[2].checked) totalHaul += haul3;
+        if (enabled[3].checked) totalHaul += haul4;
     }
     calculateHauls();
 
