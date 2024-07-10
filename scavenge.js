@@ -232,7 +232,7 @@ function scavenge() {
         curtain.id = "curtain";
         curtain.onkeypress = curtain.onclick = function(){ return false; }
         try {
-            await new Promise(r => setTimeout(r, 200));
+            await new Promise(r => setTimeout(r, 600));
             calculateHauls();
             haulCategory = 0;
             localStorage.setItem("haulCategory", haulCategory);
