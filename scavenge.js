@@ -210,8 +210,8 @@ function scavenge() {
     })
 
     sendButtons = $(".free_send_button")
-    sendButtons.on("change", function() {
-        await new Promise(r => setTimeout(r, 2000));
+    sendButtons.on("click", function() {
+        await new Promise(r => setTimeout(r, 1000));
         calculateHauls();
         haulCategory = 0;
         localStorage.setItem("haulCategory", haulCategory);
