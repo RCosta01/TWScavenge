@@ -215,7 +215,7 @@ function scavenge() {
         haulCategory = 0;
         localStorage.setItem("haulCategory", haulCategory);
         scavenge();
-    }
+    });
 
     $.each(checkboxValues, function (key, value) {
         $("#" + key).prop('checked', value);
