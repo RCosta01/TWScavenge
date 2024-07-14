@@ -327,16 +327,24 @@ function scavenge() {
 
         time = hours * 3600;
         haul = ((time / duration_factor - duration_initial_seconds) ** (1 / (duration_exponent)) / 100) ** (1 / 2);
-        haul1 = haul / 0.1;
-        haul2 = haul / 0.25;
-        haul3 = haul / 0.5;
-        haul4 = haul / 0.75;
         var enabled = $(".border-frame-gold-red :checkbox");
         totalHaul = 0;
-        if (enabled[0].checked) totalHaul += haul1;
-        if (enabled[1].checked) totalHaul += haul2;
-        if (enabled[2].checked) totalHaul += haul3;
-        if (enabled[3].checked) totalHaul += haul4;
+        if (enabled[0].checked){
+            haul1 = haul / 0.1;
+            totalHaul += haul1;
+        } else haul1 = 0
+        if (enabled[1].checked){
+            haul2 = haul / 0.25;
+            totalHaul += haul2;
+        } else haul2 = 0
+        if (enabled[2].checked){
+            haul3 = haul / 0.5;
+            totalHaul += haul3;
+        } else haul3 = 0
+        if (enabled[3].checked){
+            haul4 = haul / 0.75;
+            totalHaul += haul4;
+        } else haul4 = 0
     }
     calculateHauls();
 
