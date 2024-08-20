@@ -234,8 +234,8 @@ function scavenge() {
         try {
             await new Promise(r => setTimeout(r, 600));
             calculateHauls();
-            haulCategory = 0;
-            localStorage.setItem("haulCategory", haulCategory);
+            //haulCategory = 0;
+            //localStorage.setItem("haulCategory", haulCategory);
             scavenge();
         }
         finally {
