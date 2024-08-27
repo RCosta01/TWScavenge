@@ -320,10 +320,15 @@ function scavenge() {
         checkboxStatus();
 
         totalLoot = spears * 25 + swords * 15 + axes * 10 + lightC * 80 + heavyC * 50 + archer * 10 + marcher * 50;
-        totalSpSwLoot = spears * 25 + swords * 15;
+        //totalSpSwLoot = spears * 25 + swords * 15;
         possibleLoot = spears * 25 + swords * 15 + axes * 10 + lightC * 80 + heavyC * 50 + archer * 10 + marcher * 50;
-        spearRatio = spears / (spears * 25 + swords * 15);
-        swordRatio = swords / (spears * 25 + swords * 15);
+        spearRatio = spears / (spears * 25 + swords * 15 + axes * 10 + lightC * 80 + heavyC * 50 + archer * 10 + marcher * 50);
+        swordRatio = swords / (spears * 25 + swords * 15 + axes * 10 + lightC * 80 + heavyC * 50 + archer * 10 + marcher * 50);
+        axesRatio = axes / (spears * 25 + swords * 15 + axes * 10 + lightC * 80 + heavyC * 50 + archer * 10 + marcher * 50);
+        lightCRatio = lightC / (spears * 25 + swords * 15 + axes * 10 + lightC * 80 + heavyC * 50 + archer * 10 + marcher * 50);
+        archerRatio = archer / (spears * 25 + swords * 15 + axes * 10 + lightC * 80 + heavyC * 50 + archer * 10 + marcher * 50);
+        marcherRatio = marcher / (spears * 25 + swords * 15 + axes * 10 + lightC * 80 + heavyC * 50 + archer * 10 + marcher * 50);
+        heavyCRatio = heavyC / (spears * 25 + swords * 15 + axes * 10 + lightC * 80 + heavyC * 50 + archer * 10 + marcher * 50);
 
         time = hours * 3600;
         haul = ((time / duration_factor - duration_initial_seconds) ** (1 / (duration_exponent)) / 100) ** (1 / 2);
@@ -357,17 +362,8 @@ function scavenge() {
 
 
     if (totalLoot > totalHaul) {
-        if (totalSpSwLoot > totalHaul) {
-            if (haulCategory == 0) {
-                haulCategory = 1;
-                localStorage.setItem("haulCategory", haulCategory);
-            }
-        } else {
-            if (haulCategory == 0) {
-                haulCategory = 2;
-                localStorage.setItem("haulCategory", haulCategory);
-            }
-        }
+        haulCategory = 1;
+        localStorage.setItem("haulCategory", haulCategory);
     } else {
         if (haulCategory == 0) {
             haulCategory = 3;
@@ -426,23 +422,23 @@ function scavenge() {
             },
             {
                 type: 'axe',
-                count: 0
+                count: (haul4 * axesRatio)
             },
             {
                 type: 'archer',
-                count: 0
+                count: (haul4 * archerRatio)
             },
             {
                 type: 'light',
-                count: 0
+                count: (haul4 * lightCRatio)
             },
             {
                 type: 'marcher',
-                count: 0
+                count: (haul4 * marcherRatio)
             },
             {
                 type: 'heavy',
-                count: 0
+                count: (haul4 * heavyCRatio)
             },
         ];
         scavengeOptions[cleverCollectors] = [
@@ -456,23 +452,23 @@ function scavenge() {
             },
             {
                 type: 'axe',
-                count: 0
+                count: (haul3 * axesRatio)
             },
             {
                 type: 'archer',
-                count: 0
+                count: (haul3 * archerRatio)
             },
             {
                 type: 'light',
-                count: 0
+                count: (haul3 * lightCRatio)
             },
             {
                 type: 'marcher',
-                count: 0
+                count: (haul3 * marcherRatio)
             },
             {
                 type: 'heavy',
-                count: 0
+                count: (haul3 * heavyCRatio)
             },
         ];
         scavengeOptions[humbleHaulers] = [
@@ -486,23 +482,23 @@ function scavenge() {
             },
             {
                 type: 'axe',
-                count: 0
+                count: (haul2 * axesRatio)
             },
             {
                 type: 'archer',
-                count: 0
+                count: (haul2 * archerRatio)
             },
             {
                 type: 'light',
-                count: 0
+                count: (haul2 * lightCRatio)
             },
             {
                 type: 'marcher',
-                count: 0
+                count: (haul2 * marcherRatio)
             },
             {
                 type: 'heavy',
-                count: 0
+                count: (haul2 * heavyCRatio)
             },
         ];
         scavengeOptions[lackadaisicalLooters] = [
@@ -516,23 +512,23 @@ function scavenge() {
             },
             {
                 type: 'axe',
-                count: 0
+                count: (haul1 * axesRatio)
             },
             {
                 type: 'archer',
-                count: 0
+                count: (haul1 * archerRatio)
             },
             {
                 type: 'light',
-                count: 0
+                count: (haul1 * lightCRatio)
             },
             {
                 type: 'marcher',
-                count: 0
+                count: (haul2 * marcherRatio)
             },
             {
                 type: 'heavy',
-                count: 0
+                count: (haul1 * heavyCRatio)
             },
         ];
 
